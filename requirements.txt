@@ -1,1 +1,7 @@
 pytest
+os
+xmltodict
+dicttoxml
+xml
+json
+xml.etree.ElementTree 
