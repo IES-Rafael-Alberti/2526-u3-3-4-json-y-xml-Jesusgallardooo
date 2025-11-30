@@ -1,5 +1,5 @@
 import json
-
+import os
 
 def cargar_json(nombre_fichero: str) -> dict:
     """
@@ -104,7 +104,7 @@ def mostrar_datos(usuarios: list):
     print("--- Contenido Actual del JSON ---")
     
     if not usuarios:
-        print("No hay usuarios en el archivo.")
+        print("ERROR El archivo JSON no contiene usuarios!")
     else:
         for usuario in usuarios:
             id_usuario = usuario.get("id", "Desconocido")
@@ -128,24 +128,23 @@ def inicializar_datos():
         print(f"Datos inicializados desde '{archivo_origen}' a '{archivo_destino}'.")
 
     except FileNotFoundError:
-        print(f"Error: El archivo '{archivo_origen}' no existe.")
+        print(f"ERROR El archivo origen '{archivo_origen}' no existe. No se realizó la copia.")
 
     except json.JSONDecodeError:
-        print(f"Error: El archivo '{archivo_origen}' tiene un formato JSON inválido.")
+        print(f"ERROR El archivo origen '{archivo_origen}' tiene un formato JSON inválido.")
 
     except Exception as e:
         print(f"Error inesperado: {e}")
 
 
-import os
-import json
+
 
 def main():
     """
     Función principal que realiza las operaciones de gestión de un archivo JSON.
     """
 
-    # RUTA del archivo de trabajo
+    # RUTA del archivo donde guardaremos los datos
     nombre_fichero = "datos_usuarios.json"
 
     # 1. Limpiar la consola
@@ -162,7 +161,10 @@ def main():
         return
 
     # 4. Mostrar contenido inicial
-    mostrar_datos(datos["usuarios"])
+    if "usuarios" in datos:
+        mostrar_datos(datos["usuarios"])
+    else:
+        print("ERROR El archivo JSON no contiene usuarios!")
     input("\nPresiona ENTER para continuar...")
 
     # 5. Actualizar edad de un usuario
@@ -187,7 +189,7 @@ def main():
     # 8. Guardar cambios
     guardar_json(nombre_fichero, datos)
 
-    print("Cambios guardados en datos_usuarios.json ✔")
+    print("Cambios guardados en datos_usuarios.json")
 
 
 if __name__ == "__main__":
