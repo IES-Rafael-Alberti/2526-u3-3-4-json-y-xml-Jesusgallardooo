@@ -1,1 +1,5 @@
 pytest
+os
+xmltodict
+dicttoxml
+json

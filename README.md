@@ -22,7 +22,7 @@ Cada ejercicio en un archivo diferente.
 # Título de la Actividad
 
 ## Identificación de la Actividad
-- **ID de la Actividad:** 3.6/3.7
+- **ID de la Actividad:** 3.4/3.5
 - **Módulo:** PROG
 - **Unidad de Trabajo:** UD3: Estructuras de datos
 - **Fecha de Creación:** 28/11/2025
